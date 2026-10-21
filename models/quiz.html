@@ -127,7 +127,7 @@
       const d=document.createElement('div');d.className='part';
       d.innerHTML='<div class="phead"><span class="dot" style="background:'+(part.color||accent)+';color:'+(part.color||accent)+'"></span><h3>'+(i+1)+'. '+part.name+'</h3>'+(pass?'<span class="done"> 已通过</span>':'')+'</div>'
         +'<div class="desc">'+(part.diff||part.desc||'')+'</div>'
-        +'<div class="meta"><span class="qn">'+(qn?('随堂考核 '+qn+' 题 · 全对通过'):'3D 详解 + 部件课')+'</span><span class="qn">2 个实训游戏</span><a class="go" href="./part.html?m='+m+'&p='+i+'">开始看图练习 →</a></div>';
+        +'<div class="meta"><span class="qn">'+(qn?('随堂考核 '+qn+' 题 · 全对通过'):'3D 详解 + 部件课')+'</span><span class="qn">'+(course.games?(course.games.length+' 个实训游戏'):'实训游戏')+'</span><a class="go" href="./part.html?m='+m+'&p='+i+'">开始看图练习 →</a></div>';
       grid.appendChild(d);
     });
     const total=entries.length;
