@@ -15,10 +15,36 @@
 </head>
 <body class="studio-app">
 
+<!-- ============ 进入欢迎页 ============ -->
+<div id="welcomeSplash" role="dialog" aria-label="欢迎页">
+  <style>
+    #welcomeSplash{position:fixed;inset:0;z-index:9999;background:#0c0f0d;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;cursor:pointer;transition:opacity .6s ease;font-family:inherit}
+    #welcomeSplash.hide{opacity:0;pointer-events:none}
+    #welcomeSplash .ws-mark{width:74px;height:74px;border-radius:18px;background:linear-gradient(135deg,#1d7a4f,#0f4d31);display:flex;align-items:center;justify-content:center;box-shadow:0 0 40px rgba(46,196,135,.35);animation:wsPop .8s ease}
+    #welcomeSplash .ws-mark svg{width:42px;height:42px}
+    #welcomeSplash .ws-name{font-size:clamp(26px,4.5vw,44px);font-weight:800;color:#f2f6f3;letter-spacing:2px;text-align:center;padding:0 20px}
+    #welcomeSplash .ws-sub{font-size:clamp(15px,2.2vw,20px);color:#7ee0b0;letter-spacing:4px;text-align:center;padding:0 20px}
+    #welcomeSplash .ws-tip{font-size:13px;color:#5c6b62;margin-top:26px;letter-spacing:1px}
+    @keyframes wsPop{0%{transform:scale(.6);opacity:0}100%{transform:scale(1);opacity:1}}
+  </style>
+  <div class="ws-mark"><svg viewBox="0 0 34 40" fill="none" aria-hidden="true"><path d="M19 2 5 21h12l-2 17 14-21H17l2-15Z" fill="#eafaf1"/></svg></div>
+  <div class="ws-name">欢迎进入智电汽修二班</div>
+  <div class="ws-sub">新能源汽车3D虚拟维修教学系统</div>
+  <div class="ws-tip">点击任意处进入 · 3 秒后自动进入</div>
+</div>
+<script>
+(function(){
+  var s=document.getElementById('welcomeSplash');
+  function dismiss(){if(!s)return;s.classList.add('hide');setTimeout(function(){s&&s.parentNode&&s.parentNode.removeChild(s)},700)}
+  s.addEventListener('click',dismiss);
+  setTimeout(dismiss,3000);
+})();
+</script>
+
 <a class="skip-link" href="#mainContent">跳到主要内容</a>
 <nav class="nav studio-sidebar" id="sidebar" aria-label="主要导航">
-  <a class="brand" href="/#home" aria-label="智电汽修 · 学习总览"><span class="brand-mark"><svg viewBox="0 0 34 40" fill="none" aria-hidden="true"><path d="M19 2 5 21h12l-2 17 14-21H17l2-15Z" fill="currentColor"/></svg></span><span><strong>智电汽修</strong><small>新能源汽车维修学习平台</small></span></a>
-  <div class="nav-label">LEARNING STUDIO</div>
+  <a class="brand" href="/#home" aria-label="智电汽修 · 学习总览"><span class="brand-mark"><svg viewBox="0 0 34 40" fill="none" aria-hidden="true"><path d="M19 2 5 21h12l-2 17 14-21H17l2-15Z" fill="currentColor"/></svg></span><span><strong>智电汽修二班</strong><small>新能源汽车3D虚拟维修教学系统</small></span></a>
+  <div class="nav-label">新能源汽车维修学习</div>
   <div class="nav-main">
     <button data-p="home" class="active"><span data-icon="home"></span>学习总览</button>
     <button data-p="models"><span data-icon="cube"></span>3D 拆解台</button>
@@ -34,7 +60,7 @@
     <button data-p="membership"><span data-icon="shield"></span>会员与方案<span class="demo-nav-label">DEMO</span></button>
     <button data-p="app"><span data-icon="download"></span>安装应用</button>
     <a href="/teacher.html"><span data-icon="users"></span>教师工作台</a>
-    <div class="sidebar-version">ZHIDIAN · EV EDUCATION</div>
+    <div class="sidebar-version">智电汽修二班 · 教学平台</div>
   </div>
 </nav>
 <header class="studio-topbar">
@@ -71,8 +97,8 @@
 <section class="page active" id="p-home" aria-label="学习总览">
   <div class="home-hero">
     <div class="hero-copy">
-      <div class="eyebrow">EV LEARNING STUDIO</div>
-      <h1>学懂结构，<br><em>修好每一辆车。</em></h1>
+      <div class="eyebrow">新能源汽车3D虚拟维修教学系统</div>
+      <h1>智电汽修二班，<br><em>修好每一辆车。</em></h1>
       <p>从结构认知到故障诊断，系统掌握新能源汽车维修核心能力。<br>让每一个原理，看得见，也学得会。</p>
       <a class="hero-primary" href="/#models">进入 3D 拆解台<span data-icon="arrow"></span></a>
       <button class="hero-secondary" onclick="go('course')">探索体系课程<span data-icon="chevron"></span></button>
@@ -170,7 +196,7 @@
 </main>
 
 <div class="foot">
-<span>EV LEARNING STUDIO</span>智电汽修 · 教学辅助与知识服务平台<br>涉及高压操作须由持证人员在断电验电后执行 · 模拟练习不构成职业资格认证
+<span>智电汽修二班</span>新能源汽车3D虚拟维修教学系统<br>涉及高压操作须由持证人员在断电验电后执行 · 模拟练习不构成职业资格认证
 </div>
 
 <script src="data.js"></script>

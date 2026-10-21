@@ -45,7 +45,7 @@ function ensureCourseOwner(){if(CourseProgress.key(vehicle,course.partId,course.
 function save(){if(!courseAccessible())return;if(CourseProgress.key(vehicle,course.partId,course.lessonId)!==storageKey){location.reload();return;}record.updatedAt=Date.now();record.quizTotal=course.quiz.length;const snapshot=mergeProgress(CourseProgress.get(vehicle,course.partId,course.lessonId));try{localStorage.setItem(storageKey,JSON.stringify(snapshot))}catch{}updateProgress()}
 function names(){return course.games.length?['学原理','做练习','维修实训','学习结果']:['学原理','做练习','学习结果']}
 function steps(){const list=names();return '<ol id="lessonSteps" style="--step-count:'+list.length+'" aria-label="课程进度">'+list.map((name,i)=>'<li class="'+(i===record.stage?'active':i<record.stage?'completed':'')+'"'+(i===record.stage?' aria-current="step"':'')+'><span class="step-number">'+String(i+1)+'</span><span>'+name+'</span></li>').join('')+'</ol>'}
-function title(text){document.getElementById('courseTitle').textContent=course.title;document.getElementById('courseMeta').textContent=text;document.title=course.title+' · '+text+' | 智电汽修'}
+function title(text){document.getElementById('courseTitle').textContent=course.title;document.getElementById('courseMeta').textContent=text;document.title=course.title+' · '+text+' | 智电汽修二班'}
 function model(){return course.builder?'<div class="lesson-model"><iframe src="/models/component.html?part='+encodeURIComponent(course.builder)+'&title='+encodeURIComponent(course.title)+'" title="'+esc(course.title)+' 3D 模型" loading="lazy"></iframe></div><p class="model-note">旋转、缩放，查看部件结构。</p>':''}
 function section(name,body){return body?'<section class="lesson-section"><h2>'+esc(name)+'</h2>'+body+'</section>':''}
 function mountReadingVisuals(host,hasBrands){

@@ -89,7 +89,7 @@
     current={path:v.path,parent:v.parent,breadcrumbs:crumbs,section:v.section,title:v.title};
     var hash=v.path;if(location.hash!==hash)history[replace?'replaceState':'pushState']({studio:true,path:hash},'',hash);
     document.getElementById('routeBreadcrumbs').innerHTML='<span class="current" id="currentPage">'+esc(titles[v.section])+'</span>';
-    document.title=v.title+' · 智电汽修';
+    document.title=v.title+' · 智电汽修二班';
     document.querySelectorAll('.nav [data-p]').forEach(function(btn){var active=btn.dataset.p===v.section;btn.classList.toggle('active',active);if(active)btn.setAttribute('aria-current','page');else btn.removeAttribute('aria-current')});
     var page=document.getElementById('p-'+v.section),heading=page.querySelector('.page-header .sec'),desc=page.querySelector('.page-description'),back=page.querySelector('.section-back');
     if(heading)heading.textContent=v.title;if(desc)desc.textContent=v.description;
