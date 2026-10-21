@@ -1,13 +1,16 @@
 {
-  "name": "智电汽修二班",
-  "short_name": "带教师傅",
-  "description": "油转电技师带教Agent：高压安全课、BMS故障码带教、案例库、考证练习",
-  "start_url": "./index.html",
+  "id": "/",
+  "name": "智电汽修二班 · 新能源汽车3D虚拟维修教学系统",
+  "short_name": "智电汽修二班",
+  "description": "新能源汽车3D虚拟维修教学系统：高压安全课、部件课、故障码带教、维修实训游戏、考证备考",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#f4f6fa",
-  "theme_color": "#0b3d91",
+  "background_color": "#111512",
+  "theme_color": "#111512",
   "icons": [
-    {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
-    {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png"}
+    {"src": "app-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "app-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "app-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
   ]
 }
