@@ -164,8 +164,28 @@ function select(idx) {
     if(detail.hasChildNodes())detail.append(document.createElement('br'));detail.append(a);
   }
   document.getElementById('pcCourse').hidden=true;
+  fillGames(idx);
   card.classList.add('show');
   if(shellMode==='solid'&&!p.shellPart){shellMode='xray';applyMode();}
+}
+/* ---------- 备注下方的实训游戏入口 ---------- */
+const GAME_NAMES={motor:'驱动电机',battery:'动力电池包',bms:'电池管理系统',reducer:'减速器',inverter:'电机控制器',obc:'车载充电机',dcdc:'DC-DC',pdu:'高压配电盒',vcu:'整车控制器',compressor:'电动压缩机',thermal:'热管理系统',chargeport:'充电口',cabin:'座舱电气',wheel:'车轮制动',body:'车身壳体',hvil:'高压互锁',imd:'绝缘监测',module:'电池模组',elock:'充电电子锁',canbus:'CAN总线',msd:'维修开关',relay:'主继电器',ptc:'PTC加热器',brake:'制动回收',gearoil:'减速器油',lvbat:'12V蓄电池',pump:'电子水泵',wiper:'雨刮电机',fastgun:'快充握手',resolver:'旋变传感器',engine_oil:'发动机 · 机油保养',engine_ign:'发动机 · 点火失火',dht_oil:'DHT · 油液更换',dht_clutch:'DHT · 离合器打滑',tank_leak:'油箱 · 渗油检修',tank_pump:'油箱 · 燃油泵更换',exhaust_rust:'排气 · 锈蚀补焊',exhaust_hanger:'排气 · 吊耳消音器',rex_maint:'增程器 · 例行保养',rex_gen:'增程器 · 发电机检修',stack_leak:'燃料电池堆 · 氢泄漏',stack_maint:'电堆 · 单片电压巡检',h2line_leak:'供氢管路 · 检漏',h2pump:'氢循环泵 · 检修',airmotor:'空压机 · 供气检修',humid:'加湿器 · 排水除垢',h2tank_check:'储氢罐 · 定期安检',h2valve:'储氢罐 · 瓶阀更换',h2fill_cap:'加氢口 · 密封检修',h2vent:'氢系统 · 安全泄压'};
+function fillGames(idx){
+  const box=document.getElementById('pcGames');if(!box)return;
+  box.replaceChildren();box.classList.remove('show');
+  const course=((window.MODEL_COURSES||{})[KEY]||[])[idx];
+  const games=(course&&!course.visualOnly&&(course.games||[]).length)?course.games:null;
+  if(!games){box.hidden=true;return;}
+  box.hidden=false;
+  const h=document.createElement('p');h.className='pcg-title';h.textContent=' 配套实训游戏';box.append(h);
+  games.forEach((gid,i)=>{
+    const a=document.createElement('a');a.className='pcg';a.href='../videos/repair-game.html?level='+encodeURIComponent(gid);a.target='_blank';a.rel='noopener';
+    a.style.animationDelay=(0.12+i*0.12)+'s';
+    a.innerHTML='<span class="pcg-dot"></span><span class="pcg-name">'+(GAME_NAMES[gid]||'维修实训')+'</span><span class="pcg-play">开始实训 →</span>';
+    box.append(a);
+  });
+  requestAnimationFrame(()=>box.classList.add('show'));
+  setTimeout(()=>{for(const a of box.querySelectorAll('.pcg')){a.style.animation='none';a.style.opacity='1';}},700+games.length*130);
 }
 document.getElementById('pcClose').onclick=()=>select(-1);
 const ray=new THREE.Raycaster(),mouse=new THREE.Vector2();let down;
